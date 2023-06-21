@@ -58,6 +58,20 @@ const FormDetail = () => {
                           />
                         </div>
                       );
+                    case "password":
+                      return (
+                        <div key={field.id}>
+                          <label htmlFor={name} className="form-label">
+                            {field.label}
+                          </label>
+                          <input
+                            type="password"
+                            id={name}
+                            name={name}
+                            className="form-control"
+                          />
+                        </div>
+                      );
                     case "select":
                       return (
                         <div key={field.id}>

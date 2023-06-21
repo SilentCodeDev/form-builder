@@ -14,9 +14,24 @@ const Forms = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  const handleDelete = (formId) => {
+    axios.delete(`/api/forms/${formId}/`).then((response) => {
+      setForms(forms.filter((form) => form.id !== formId));
+    });
+  };
+
   return (
     <div className="container">
-      <h1>Forms</h1>
+      <div className="d-flex my-5">
+        <div className="me-auto">
+          <h1>Forms</h1>
+        </div>
+        <div className="">
+          <Link to={"/forms/create"} className="btn btn-outline-primary">
+            Create Form
+          </Link>
+        </div>
+      </div>
       <table className="table table-stripped">
         <thead>
           <tr>
@@ -42,9 +57,14 @@ const Forms = () => {
                     to={`/forms/${form.id}/edit`}
                     className="btn btn-primary mx-1"
                   >
-                    View
+                    Edit
                   </Link>
-                  <button className="btn btn-danger mx-1">Delete</button>
+                  <button
+                    className="btn btn-danger mx-1"
+                    onClick={() => handleDelete(form.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))

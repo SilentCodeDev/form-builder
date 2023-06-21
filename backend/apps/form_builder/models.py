@@ -20,6 +20,7 @@ class Section(models.Model):
 class Field(models.Model):
     FIELD_TYPE_CHOICES = [
         ("text", "Text"),
+        ("password", "Password"),
         ("number", "Number"),
         ("email", "Email"),
         ("phone", "Phone"),
